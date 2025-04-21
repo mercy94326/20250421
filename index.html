@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Permissions-Policy" content="accelerometer=*, gyroscope=*, magnetometer=*">
+  <title>Sketch</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="libraries/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.play/1.3.0/p5.play.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #embeddedFrame {
+      display: none;
+      position: absolute;
+      width: 1000px;
+      height: 700px;
+      border: 10px solid transparent;
+      border-image: linear-gradient(45deg, #ff6ec4, #7873f5);
+      border-image-slice: 1;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0.5) rotateY(90deg);
+      opacity: 0;
+      transition: opacity 1s ease, transform 1s ease;
+      z-index: 999;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      border-radius: 16px;
+    }
+
+    #embeddedFrame.show {
+      display: block;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+    }
+  </style>
+</head>
+
+<body>
+  <iframe id="embeddedFrame" src=""></iframe>
+
+  <script src="sketch.js"></script>
+  <script>
+    function showIframe(link) {
+      const iframe = document.getElementById("embeddedFrame");
+      iframe.src = link;
+      iframe.classList.add("show");
+    }
+
+    // ❌ 移除自動載入 & 不自動顯示 iframe
+  </script>
+</body>
+</html>
